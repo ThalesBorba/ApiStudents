@@ -26,8 +26,6 @@ public class Student {
     @Column(nullable = false)
     private String lastName;
 
-    private String secondName;
-
     @Column(nullable = false, unique = true)
     private String matricula;
 

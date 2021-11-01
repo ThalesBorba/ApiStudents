@@ -1,4 +1,4 @@
-package one.digitalinnovation.studentapi.dto;
+package one.digitalinnovation.studentapi.dto.response;
 
 import lombok.Builder;
 import lombok.Data;
