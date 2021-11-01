@@ -29,7 +29,7 @@ public class Student {
     private String secondName;
 
     @Column(nullable = false, unique = true)
-    private String cpf;
+    private String matricula;
 
     private LocalDate birthDate;
 
