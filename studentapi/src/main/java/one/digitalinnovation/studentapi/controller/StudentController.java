@@ -3,6 +3,7 @@ package one.digitalinnovation.studentapi.controller;
 import one.digitalinnovation.studentapi.dto.request.StudentDTO;
 import one.digitalinnovation.studentapi.dto.response.MessageResponseDTO;
 import one.digitalinnovation.studentapi.entities.Student;
+import one.digitalinnovation.studentapi.exceptions.StudentNotFoundException;
 import one.digitalinnovation.studentapi.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,4 +34,16 @@ public class StudentController {
     public List<StudentDTO> listAll() {
         return studentService.listAll();
     }
+
+    @GetMapping("/{id}")
+    public StudentDTO findById(@PathVariable Long id) throws StudentNotFoundException {
+        return  studentService.findById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable Long id) throws StudentNotFoundException {
+        studentService.delete(id);
+    }
+
 }

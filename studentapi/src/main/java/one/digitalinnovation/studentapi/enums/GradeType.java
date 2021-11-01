@@ -7,10 +7,10 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum GradeType {
 
-    FIRSTSEMESTER("First semester grade"),
-    SECONDSEMESTER("Second semester grade"),
-    THIRDSEMESTER("Third semester grade"),
-    FOURTHSEMESTER("Fourth semester grade"),
+    FIRSTTERM("First semester grade"),
+    SECONDTERM("Second semester grade"),
+    THIRDTERM("Third semester grade"),
+    FOURTHTERM("Fourth semester grade"),
     RETAKE("Retake Test"),
     FINALSCORE("Final score");
 
