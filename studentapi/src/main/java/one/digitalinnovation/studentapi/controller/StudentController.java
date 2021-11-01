@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @RestController
 @RequestMapping("/students")
@@ -25,5 +27,10 @@ public class StudentController {
     @ResponseStatus(HttpStatus.CREATED)
     public MessageResponseDTO createStudent(@RequestBody @Valid StudentDTO studentDTO) {
         return studentService.createStudent(studentDTO);
+    }
+
+    @GetMapping
+    public List<StudentDTO> listAll() {
+        return studentService.listAll();
     }
 }

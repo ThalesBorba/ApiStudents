@@ -8,6 +8,9 @@ import one.digitalinnovation.studentapi.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class StudentService {
 
@@ -27,5 +30,12 @@ public class StudentService {
                 .builder()
                 .message("Created student with ID " + savedStudent.getId())
                 .build();
+    }
+
+    public List<StudentDTO> listAll() {
+        List<Student> allStudents = studentRepository.findAll();
+        return allStudents.stream()
+                .map(studentMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }
