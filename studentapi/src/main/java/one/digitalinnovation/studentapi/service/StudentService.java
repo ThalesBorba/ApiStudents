@@ -26,23 +26,22 @@ public class StudentService {
     }
 
     public MessageResponseDTO createStudent(StudentDTO studentDTO) {
-        Student studentToSave = studentMapper.toModel(studentDTO);
-        Student savedStudent = studentRepository.save(studentToSave);
-        return MessageResponseDTO
-                .builder()
-                .message("Created student with ID " + savedStudent.getId())
-                .build();
+        Student savedStudent = getStudent(studentDTO);
+        return createMessageResponse(savedStudent.getId(), "Created ");
+    }
+
+    public MessageResponseDTO updateById(Long id, StudentDTO studentDTO) throws StudentNotFoundException {
+        verifyIfExists(id);
+        Student updatedStudent = getStudent(studentDTO);
+        return createMessageResponse(updatedStudent.getId(), "Updated ");
     }
 
     public List<StudentDTO> listAll() {
         List<Student> allStudents = studentRepository.findAll();
-        return allStudents.stream()
-                .map(studentMapper::toDTO)
-                .collect(Collectors.toList());
+        return studentsList(allStudents);
     }
 
     public StudentDTO findById(Long id) throws StudentNotFoundException {
-<<<<<<< HEAD
         Student student = verifyIfExists(id);
         return studentMapper.toDTO(student);
     }
@@ -52,13 +51,25 @@ public class StudentService {
         studentRepository.deleteById(id);
     }
 
+    private Student getStudent(StudentDTO studentDTO) {
+        Student studentToSave = studentMapper.toModel(studentDTO);
+        return studentRepository.save(studentToSave);
+    }
+
+    private MessageResponseDTO createMessageResponse(Long id, String s) {
+        return MessageResponseDTO.builder()
+                .message(s + "student with the ID " + id)
+                .build();
+    }
+
     private Student verifyIfExists(Long id) throws StudentNotFoundException {
         return studentRepository.findById(id)
                 .orElseThrow(() -> new StudentNotFoundException(id));
-=======
-        Student student = studentRepository.findById(id)
-                .orElseThrow(() -> new StudentNotFoundException(id));
-        return studentMapper.toDTO(student);
->>>>>>> origin/master
+    }
+
+    private List<StudentDTO> studentsList(List<Student> allStudents) {
+        return allStudents.stream()
+                .map(studentMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }
