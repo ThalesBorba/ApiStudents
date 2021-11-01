@@ -42,6 +42,7 @@ public class StudentService {
     }
 
     public StudentDTO findById(Long id) throws StudentNotFoundException {
+<<<<<<< HEAD
         Student student = verifyIfExists(id);
         return studentMapper.toDTO(student);
     }
@@ -54,5 +55,10 @@ public class StudentService {
     private Student verifyIfExists(Long id) throws StudentNotFoundException {
         return studentRepository.findById(id)
                 .orElseThrow(() -> new StudentNotFoundException(id));
+=======
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new StudentNotFoundException(id));
+        return studentMapper.toDTO(student);
+>>>>>>> origin/master
     }
 }
