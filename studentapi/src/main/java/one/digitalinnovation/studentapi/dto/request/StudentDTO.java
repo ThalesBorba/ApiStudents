@@ -34,7 +34,7 @@ public class StudentDTO {
     @Size(min = 7, max = 8)
     private String matricula;
 
-    private LocalDate birthDate;
+    private String birthDate;
 
     @NotEmpty
     @Valid
