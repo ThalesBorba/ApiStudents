@@ -33,8 +33,8 @@ public class StudentDTO {
 
     private String birthDate;
 
-    @Valid
     @NotEmpty
+    @Valid
     private List<EvaluationDTO> evaluations;
 
 }

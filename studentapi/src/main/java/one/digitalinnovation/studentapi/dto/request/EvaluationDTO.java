@@ -22,7 +22,5 @@ public class EvaluationDTO {
     @Enumerated(EnumType.STRING)
     private GradeType gradeType;
 
-    @NotEmpty
-    @Size(min = 1, max = 2)
     private Long grade;
 }

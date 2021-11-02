@@ -1,10 +1,9 @@
 package one.digitalinnovation.studentapi.mapper;
 
-import one.digitalinnovation.studentapi.mapper.StudentMapper;
-import one.digitalinnovation.studentapi.dto.request.StudentDTO;
 import one.digitalinnovation.studentapi.dto.request.EvaluationDTO;
-import one.digitalinnovation.studentapi.entities.Student;
+import one.digitalinnovation.studentapi.dto.request.StudentDTO;
 import one.digitalinnovation.studentapi.entities.Evaluation;
+import one.digitalinnovation.studentapi.entities.Student;
 import one.digitalinnovation.studentapi.utils.StudentUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
